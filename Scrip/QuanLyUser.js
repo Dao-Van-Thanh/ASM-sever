@@ -34,6 +34,7 @@ document.getElementById('file-input').addEventListener('change', function () {
         const imageData = event.target.result;
         // Thiết lập giá trị của trường imageUrl
         image.src = imageData;
+        console.log(imageData);
     }
     reader.readAsDataURL(file);
 
@@ -93,6 +94,7 @@ form.addEventListener('submit', (event) => {
     // ngăn chặn form gửi request trực tiếp
     event.preventDefault();
     var files = document.getElementById('file-input').files[0];
+    console.log(files);
     const formData = new FormData();
     formData.append('id', txtID.value);
     formData.append('image', files);

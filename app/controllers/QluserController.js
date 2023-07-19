@@ -33,7 +33,7 @@ class QluserController {
     async postorput(req, res) {
         await mongoose.connect(uri);
         try {
-            var nameFile = '';
+            let nameFile = '';
             if (req.file) {
                 nameFile = req.file.filename;
             } else {
