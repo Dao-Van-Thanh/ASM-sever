@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 const express = require('express');
 const mongoose = require('mongoose');
 const Model = require('../Model/usersModel');
-const uri = 'mongodb+srv://hlndzzkun:12072003@cluster0.oelsp4u.mongodb.net/AsmSeverAndroid?retryWrites=true&w=majority'
+
+const uri = require('../uriMongoDB');
 
 module.exports = async (req, res, next) => {
     console.log('chạy 1');
