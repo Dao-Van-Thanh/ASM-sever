@@ -17,12 +17,19 @@ class QluserController {
             // };
             // const posts = await Model.paginate({}, options);
             // const reversedPosts = posts.docs.reverse(); // đảo ngược danh sách bài đăng
-            var users = await Model.find({});
-            var reversedPosts = users.reverse();
-            res.render('QuanLyUser', {
-                user: req.data,
-                posts: reversedPosts, // sử dụng lại cấu trúc của đối tượng posts, chỉ thay đổi thuộc tính docs
-            });
+            // var users = await Model.find({});
+            const users = await Model.find({ email: { $ne: "a@a" } });
+            if (!users) {
+                res.render('QuanLyUser', {
+                });
+            } else {
+                var reversedPosts = users.reverse();
+                res.render('QuanLyUser', {
+                    user: req.data,
+                    posts: reversedPosts, // sử dụng lại cấu trúc của đối tượng posts, chỉ thay đổi thuộc tính docs
+                });
+
+            }
 
         } catch (error) {
             console.log(error);
@@ -86,9 +93,9 @@ class QluserController {
                             res.status(500).json({ message: 'Lỗi' });
                         })
                 })
-                // .finally(() => {
-                //     
-                // });
+            // .finally(() => {
+            //     
+            // });
             // } else {
             // }
 
@@ -132,11 +139,11 @@ class QluserController {
                     user: req.data,
                     posts: searchUsers, // sử dụng lại cấu trúc của đối tượng posts, chỉ thay đổi thuộc tính docs
                 });
-                
+
 
             } else {
                 res.redirect('/qluser');
-                
+
 
             }
 
